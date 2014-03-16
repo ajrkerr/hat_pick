@@ -1,0 +1,19 @@
+{
+  "name": "hat_pick",
+  "version": "0.0.0",
+  "description": "A simple pick a name from the hat app",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ajrkerr/hat_pick.git"
+  },
+  "author": "ajrkerr",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ajrkerr/hat_pick/issues"
+  },
+  "homepage": "https://github.com/ajrkerr/hat_pick"
+}
