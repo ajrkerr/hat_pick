@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/ajrkerr/hat_pick/issues"
   },
-  "homepage": "https://github.com/ajrkerr/hat_pick"
+  "homepage": "https://github.com/ajrkerr/hat_pick",
+  "dependencies": {
+    "logfmt": "~1.0.0-pre",
+    "express": "~3.4.8"
+  },
+  "engines": {
+    "node": "0.10.x"
+  }
 }
