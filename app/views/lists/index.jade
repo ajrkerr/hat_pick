@@ -1,0 +1,14 @@
+doctype html
+html(lang="en")
+  head
+    title Das Page
+
+  body
+    h1 Jade - node template engine
+    #container.col
+      h4 All Lists
+
+      ul
+        each list in lists
+          li
+            span= list.name + "::" + list.items.join(", ")

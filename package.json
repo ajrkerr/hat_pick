@@ -4,7 +4,7 @@
   "description": "A simple pick a name from the hat app",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha spec"
   },
   "repository": {
     "type": "git",
@@ -19,7 +19,13 @@
   "dependencies": {
     "logfmt": "~1.0.0-pre",
     "express": "~3.4.8",
-    "mongodb": "~1.3.23"
+    "mongodb": "~1.3.23",
+    "oauth": "~0.9.11",
+    "jade": "~1.3.0",
+    "mongoose": "~3.8.8",
+    "lodash-node": "~2.4.1",
+    "lodash": "~2.4.1",
+    "chai": "~1.9.1"
   },
   "engines": {
     "node": "0.10.x"

@@ -1,17 +1,32 @@
-// web.js
-var express = require("express");
-var logfmt  = require("logfmt");
-// var mongo   = require('mongodb');
+// set up ========================
+"use strict";
 
+var express  = require('express');
+var app      = express();                 // create our app w/ express
+var fs       = require("fs");
 
-// Expresss Framework
-var app     = express();
+var configDir = "config";
+var routesDir = "routes";
 
-app.use(logfmt.requestLogger());
+// Requires a folder, and treats the export as a function to call
+function requireFolder(folder, app, filter) {
+  filter = filter || /\.js$/;
 
-app.get('/', function(req, res) {
-  res.send('Hello World!');
-});
+  fs.readdirSync(folder).forEach(function (file) {
+    if(filter.test(file)) {
+      var filename = "./" + folder + "/" + file;
+      console.log("Loading " + filename);
+
+      require(filename)(app);
+    }
+  });
+}
+
+console.log("Including Config");
+requireFolder(configDir, app);
+
+console.log("Including Routes");
+requireFolder(routesDir, app);
 
 // Setup the web server
 var port = Number(process.env.PORT || 5000);
@@ -19,15 +34,3 @@ var port = Number(process.env.PORT || 5000);
 app.listen(port, function() {
   console.log("Listening on " + port);
 });
-
-// Setup Mongo
-// var mongoUri = process.env.MONGOLAB_URI ||
-//   process.env.MONGOHQ_URL ||
-//   'mongodb://localhost/mydb';
-
-// mongo.Db.connect(mongoUri, function (err, db) {
-//   db.collection('mydocs', function(er, collection) {
-//     collection.insert({'mykey': 'myvalue'}, {safe: true}, function(er,rs) {
-//     });
-//   });
-// });

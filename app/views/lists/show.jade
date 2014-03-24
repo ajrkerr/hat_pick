@@ -1,0 +1,13 @@
+doctype html
+html(lang="en")
+  head
+    title Das Page
+
+  body
+    h1 Jade - node template engine
+    #container.col
+      h4= list.name
+
+      ul
+        each item in list.items
+          li= item
