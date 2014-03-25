@@ -78,12 +78,57 @@ module.exports = {
 
     // Find the list somehow
     List.findOne({"name": name}, function (err, list) {
-      var numItems   = list.items.length;
-      var pick       = Math.floor(numItems * Math.random());
+      if(err) { res.send(err); return; }
 
-      var result     = { item: list.items[pick] };
+      var index;
+      // If no index is provided, remove random item //
+      if(item == undefined) {
+        index = (Math.random() * list.items.length);
+      } else {
+        index = list.items.indexOf(item);
+      }
 
-      res.send(err || result);
+      // Remove item //
+      if(index !== -1) {
+        list.items.splice(index, 1);
+
+        // Try to save change //
+        list.save(function (err, list) {
+          if(err) { res.send(err); return; }
+          res.send({list: list});
+        });
+      } else {
+        res.send({ list: list });
+      }
+    });
+  },
+
+  addItem: function(req, res) {
+    var name    = req.params.name;
+    var item    = req.params.item;
+
+    // Find the list somehow
+    List.findOne({"name": name}, function (err, list) {
+      if(err) { res.send(err); return; }
+
+      list.items.push(item);
+
+      list.save(function (err, list) {
+        res.send(err || { list: list });
+      });
+    });
+  },
+
+  exists: function (req, res) {
+    var name    = req.params.name;
+    var item    = req.params.item;
+
+    // Find the list somehow
+    List.findOne({"name": name}, function (err, list) {
+      if(err) { res.send(err); return; }
+
+      var index = list.items.indexOf(item);
+      res.send(index !== -1);
     });
   }
 };

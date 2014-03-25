@@ -1,6 +1,6 @@
 
 module.exports = function (app) {
   app.get('/', function(req, res) {
-    res.render('./home.jade');
+    res.render('../app/views/home.jade');
   });
 }

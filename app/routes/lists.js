@@ -9,5 +9,6 @@ module.exports = function (app) {
   app.get( "/lists/:name/pick"  , listController.pickItem);
   app.post("/lists/:name/remove", listController.removeItem);
   app.post("/lists/:name/remove/:item", listController.removeItem);
-  app.post("/lists/:name/add/:item", listController.addItem);
+  app.post("/lists/:name/add/:item"   , listController.addItem);
+  app.post("/lists/:name/exists/:item", listController.exists);
 }

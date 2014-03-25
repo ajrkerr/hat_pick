@@ -6,7 +6,7 @@ var app      = express();                 // create our app w/ express
 var fs       = require("fs");
 
 var configDir = "config";
-var routesDir = "routes";
+var routesDir = "app/routes";
 
 // Requires a folder, and treats the export as a function to call
 function requireFolder(folder, app, filter) {
