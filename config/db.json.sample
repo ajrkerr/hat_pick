@@ -1,0 +1,8 @@
+{
+  "development": {
+    "connectString": "mongodb://localhost/hat-pick"
+  },
+  "heroku": {
+    "connectString": "mongodb://username:password@url:port/dbname"
+  }
+}
